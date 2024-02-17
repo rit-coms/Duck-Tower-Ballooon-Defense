@@ -3,9 +3,21 @@ using System.Collections;
 
 namespace QuackAttack.Scripts.Entities
 {
+	public enum DuckType {
+		STANDARD = 0,
+		CANNON_DUCK = 1,
+		MOMMA_DUCK = 2
+	}
+
     public interface IDuck
     {
         // Required Duck Properties
+		int type 
+		{
+			get;
+			set;
+		}
+
 		/* The damage the duck can deal to obstructions */
         int damage
         {
@@ -28,13 +40,13 @@ namespace QuackAttack.Scripts.Entities
         }
 
         /// <summary>
-        /// 	Sells a duck and sets the currency 
+        /// 	This destroys the duck. Normally, this will be used when the duck is sold.
         /// </summary>
         /// 
         /// <returns>
         /// 	The currency received from selling the duck
         /// </returns>
-        int SellDuck();
+        int DestroyDuck();
 
         /// <summary>
         /// 	Deals damage to a specified obstruction
@@ -42,6 +54,6 @@ namespace QuackAttack.Scripts.Entities
         /// <param name="obstruction"></param>
         /// <param name="damagePoints">Amount of damage to be dealt to the obstruction</param>
         /// <returns></returns>
-        int dealDamage(Obstruction obstruction, int damagePoints);
+        void dealDamage(Obstruction obstruction, int damagePoints);
     }
 }
