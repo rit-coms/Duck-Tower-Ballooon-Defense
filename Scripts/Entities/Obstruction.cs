@@ -1,15 +1,6 @@
-using Godot;
 using System;
 
-public partial class Obstruction : Node2D
+public abstract class Obstruction
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+	// We are going to need to create a node for each instance of an obstruction. Do not create a node for the abstract obstruction class.
 }
