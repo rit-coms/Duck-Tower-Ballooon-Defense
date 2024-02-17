@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class StandardDuck : Duck
+public partial class StandardDuck : Node2D
 {
     public StandardDuck()
     {
