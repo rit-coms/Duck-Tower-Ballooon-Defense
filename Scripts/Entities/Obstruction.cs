@@ -1,6 +1,13 @@
 using System;
+using System.Collections.Generic;
 
-public abstract class Obstruction
+public interface Obstruction
 {
-	// We are going to need to create a node for each instance of an obstruction. Do not create a node for the abstract obstruction class.
+	int Health { get; set; }
+	int Damage { get; set; }
+	int Speed { get; set; }
+	int Level { get; set; }
+	void DamageNest();
+	void ReceiveDamage(int damagePoints);
+	void DestrotySelf();
 }
