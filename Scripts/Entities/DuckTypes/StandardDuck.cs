@@ -6,11 +6,14 @@ using System.Collections;
 public partial class StandardDuck : Node2D, IDuck
 {
 	public enum Levels {
-
+		ONE = 1,
+		TWO = 2,
+		THREE = 3
 	}
 
     public StandardDuck()
     {
+            
     }
 
     public int type { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
