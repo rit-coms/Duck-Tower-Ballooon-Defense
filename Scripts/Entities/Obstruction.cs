@@ -9,5 +9,5 @@ public interface Obstruction
 	int Level { get; set; }
 	void DamageNest();
 	void ReceiveDamage(int damagePoints);
-	void DestrotySelf();
+	void DestroySelf();
 }

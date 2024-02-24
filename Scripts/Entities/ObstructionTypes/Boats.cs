@@ -1,26 +1,47 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 // Subclass for twig implementing the IObstruction interface
 public partial class Boats : Node, Obstruction
 {
-    public int Health { get; set; } = 20;
-    public int Damage { get; set; } = 20;
-    public int Speed { get; set; } = 20;
-    public int Level { get; set; } = 20;
-
+    public int Health { get; set; }
+    public int Damage { get; set; }
+    public int Speed { get; set; }
+    public int Level { get; set; }
+    Nest n;
+    private static Dictionary<int, (int health, int damage, int speed)> TwigLevelStats = new Dictionary<int, (int health, int damage, int speed)>
+    {
+		// Level, (Health, Damage, Speed)
+		{ 1, (20, 20, 20) },
+        { 2, (30, 30, 30) },
+        { 3, (40, 40, 40) }
+    };
+    public Boats(int level)
+    {
+        (Health, Damage, Speed) = TwigLevelStats[level];
+        Level = level;
+    }
     public void DamageNest()
     {
+        // Call nest fucntion that makes it take damage
+        // Then destory self
+        GlobalVars.Nest.TakeDamage(this.Damage);
         throw new NotImplementedException();
     }
 
-    public void DestrotySelf()
+    public void DestroySelf()
     {
-        throw new NotImplementedException();
+        if (this.Health < 0)
+        {
+            QueueFree();
+        }
     }
 
     public void ReceiveDamage(int damagePoints)
     {
-        throw new NotImplementedException();
+        Health = this.Health - damagePoints;
+        this.DestroySelf();
     }
+
 }

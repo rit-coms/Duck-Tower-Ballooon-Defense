@@ -5,5 +5,6 @@ public class StandardDuck : Duck
 {
     public StandardDuck()
     {
+
     }
 }

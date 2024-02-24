@@ -9,10 +9,11 @@ public partial class Twig : Node, Obstruction
 	public int Damage { get; set; }
 	public int Speed { get; set; }
 	public int Level { get; set; }
+	Nest n;
 	private static Dictionary<int, (int health, int damage, int speed)> TwigLevelStats = new Dictionary<int, (int health, int damage, int speed)>
 	{
-		//Level, (Health, Damage, Speed)
-        { 1, (20, 20, 20) },
+		// Level, (Health, Damage, Speed)
+		{ 1, (20, 20, 20) },
 		{ 2, (30, 30, 30) },
 		{ 3, (40, 40, 40) }
 	};
@@ -23,18 +24,24 @@ public partial class Twig : Node, Obstruction
 	}
 	public void DamageNest()
 	{
+		// Call nest fucntion that makes it take damage
+		// Then destory self
+		GlobalVars.Nest.TakeDamage(this.Damage);
 		throw new NotImplementedException();
 	}
 
-	public void DestrotySelf()
+	public void DestroySelf()
 	{
-		throw new NotImplementedException();
+		if (this.Health < 0)
+		{
+			QueueFree();
+		}
 	}
 
 	public void ReceiveDamage(int damagePoints)
 	{
-		throw new NotImplementedException();
+		Health = this.Health - damagePoints;
+		this.DestroySelf();
 	}
-
 
 }
