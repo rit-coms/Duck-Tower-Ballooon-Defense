@@ -10,7 +10,7 @@ public partial class Nest : Node
 	internal void TakeDamage(int damagePoints)
 	{
 		Health -= damagePoints;
-		DestroySelf();
+		this.DestroySelf();
 	}
 	public void DestroySelf()
 	{

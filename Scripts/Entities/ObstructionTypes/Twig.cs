@@ -27,21 +27,19 @@ public partial class Twig : Node, Obstruction
 		// Call nest fucntion that makes it take damage
 		// Then destory self
 		GlobalVars.Nest.TakeDamage(this.Damage);
-		throw new NotImplementedException();
-	}
-
-	public void DestroySelf()
-	{
-		if (this.Health < 0)
-		{
-			QueueFree();
-		}
 	}
 
 	public void ReceiveDamage(int damagePoints)
 	{
 		Health = this.Health - damagePoints;
 		this.DestroySelf();
+	}
+	public void DestroySelf()
+	{
+		if (this.Health < 0)
+		{
+			QueueFree();
+		}
 	}
 
 }

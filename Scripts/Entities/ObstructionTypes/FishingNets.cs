@@ -27,7 +27,6 @@ public partial class FishingNets : Node, Obstruction
 		// Call nest fucntion that makes it take damage
 		// Then destory self
 		GlobalVars.Nest.TakeDamage(this.Damage);
-		throw new NotImplementedException();
 	}
 
 	public void DestroySelf()
