@@ -10,17 +10,27 @@ public partial class FishingNets : Node, Obstruction
 	public int Speed { get; set; }
 	public int Level { get; set; }
 	Nest n;
-	private static Dictionary<int, (int health, int damage, int speed)> TwigLevelStats = new Dictionary<int, (int health, int damage, int speed)>
+	Node f;
+	private static Dictionary<int, (int health, int damage, int speed)> FishingNetLevelStats = new Dictionary<int, (int health, int damage, int speed)>
 	{
 		// Level, (Health, Damage, Speed)
 		{ 1, (20, 20, 20) },
 		{ 2, (30, 30, 30) },
 		{ 3, (40, 40, 40) }
 	};
-	public FishingNets(int level)
+	public FishingNets()
 	{
-		(Health, Damage, Speed) = TwigLevelStats[level];
+	}
+
+	public void Initialize(int level)
+	{
+		(Health, Damage, Speed) = FishingNetLevelStats[level];
 		Level = level;
+	}
+
+	public override void _Ready()
+	{
+		f = GetNode("follow");
 	}
 	public void DamageNest()
 	{
@@ -35,6 +45,13 @@ public partial class FishingNets : Node, Obstruction
 		{
 			QueueFree();
 		}
+	}
+
+	public override void _Process(double delta)
+	{
+		// Progress /moves the obstruction by 2.2
+		PathFollow2D fo = (PathFollow2D)f;
+		fo.Progress += (float)2.2;
 	}
 
 	public void ReceiveDamage(int damagePoints)

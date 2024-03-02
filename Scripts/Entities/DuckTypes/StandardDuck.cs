@@ -3,8 +3,8 @@ using System;
 
 public class StandardDuck : Duck
 {
-    public StandardDuck()
-    {
+	public StandardDuck()
+	{
 
-    }
+	}
 }
