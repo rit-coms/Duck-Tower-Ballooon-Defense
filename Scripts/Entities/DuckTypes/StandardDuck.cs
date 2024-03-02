@@ -1,35 +1,45 @@
 using Godot;
+using QuackAttack.DuckProperties;
 using QuackAttack.Scripts.Entities;
 using System;
 using System.Collections;
 
+
 public partial class StandardDuck : Node2D, IDuck
 {
-	public enum Levels {
-		ONE = 1,
-		TWO = 2,
-		THREE = 3
-	}
-
-    public StandardDuck()
+    public StandardDuck(int level)
     {
-            
+        // Get the available duck levels for a standard duck 
+        DuckLevels StandardDuckLevels = new DuckLevels(DuckType.STANDARD);
+
+        // Get the level based on what level the duck is
+        LevelData levelData = StandardDuckLevels.Levels[level];
+
+        // Assing the damage, speed, and price attributes based on the level the duck is
+        damage = levelData.damage;
+        speed = levelData.speed;
+        price = levelData.price;
     }
 
-    public int type { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public int damage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public int speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public ArrayList upgradePaths { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public int damage { get; set; }
+    public int speed { get; set; }
+    public int price {  get; set; }
+
+    public ArrayList upgradePaths { get; set; }
 
 	// Obstructions should probably be global class
-    public void dealDamage(Obstruction obstruction, int damagePoints)
+    public void dealDamage(Obstruction obstruction)
     {
-		// obstruction.ReceiveDamage(damagePoints);
+		//obstruction.ReceiveDamage(damage);
         throw new NotImplementedException();
     }
 
+    /*
+    *    This will be called when the duck is being sold. The returned int is the currency obtained from the destruction.
+    */
     public int DestroyDuck()
     {
-        throw new NotImplementedException();
+        QueueFree();
+        return price;
     }
 }
