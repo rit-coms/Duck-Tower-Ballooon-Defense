@@ -4,16 +4,15 @@ using QuackAttack.Scripts.Entities;
 using System;
 using System.Collections;
 
-
-public partial class StandardDuck : Node2D, IDuck
+public partial class CannonDuck : Node2D, IDuck
 {
-    public StandardDuck(int level)
+    public CannonDuck(int level)
     {
         // Get the available duck levels for a standard duck 
-        DuckLevels StandardDuckLevels = new DuckLevels(DuckType.STANDARD);
+        DuckLevels CannonDuckLevels = new DuckLevels(DuckType.STANDARD);
 
         // Get the level based on what level the duck is
-        LevelData levelData = StandardDuckLevels.Levels[level];
+        LevelData levelData = CannonDuckLevels.Levels[level];
 
         // Assing the damage, speed, and price attributes based on the level the duck is
         damage = levelData.damage;

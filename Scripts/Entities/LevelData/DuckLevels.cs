@@ -5,7 +5,7 @@ namespace QuackAttack.DuckProperties {
 			CANNON_DUCK = 1,
 			MOMMA_DUCK = 2
 	}
-
+	
 
 	/// <summary>
 	/// Object that specifies level specific characteristics
